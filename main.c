@@ -46,6 +46,12 @@ int main(){
     for(int ii=0; ii<stream.stream_length; ii++){
         rawsocket_send(*(stream.packet_stream+ii*(sizeof(packet_t))));
     }
+    
+    // modif 1
+    stream_inject(stream, TYPE_TCP_SRC_PORT, "AAABBBCC", 8);
+    for(int ii=0; ii<stream.stream_length; ii++){
+        rawsocket_send(*(stream.packet_stream+ii*(sizeof(packet_t))));
+    }
 
 
     return 0;

@@ -35,6 +35,7 @@ packet_t parse_packet(char* buffer, int size){
 
     packet.tcpheader = (struct tcphdr*) (buffer+ip_header_length);
     int tcp_header_length = packet.tcpheader->doff*4;
+    int tcp_header_length_last = packet.tcpheader->doff*4;
 
     packet.payload = (char*) buffer+ip_header_length+tcp_header_length;
 
