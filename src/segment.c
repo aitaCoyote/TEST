@@ -90,7 +90,7 @@ void compute_segment_checksum(struct tcphdr *tcpheader, unsigned short *addr, in
 void set_segment_flags(struct tcphdr *tcphdr, int flags){
     int iterator = 1;
     int *result = malloc(sizeof(int)*8);
-    int counter = 0;
+    int counter = 5;
     while (iterator <= flags) {
         if (iterator & flags){
             result[counter] = iterator;
@@ -110,6 +110,7 @@ void set_segment_flags(struct tcphdr *tcphdr, int flags){
         if((result[ii] - RST) == 0) tcphdr->rst = 1;
         if((result[ii] - SYN) == 0) tcphdr->syn = 1;
         if((result[ii] - FIN) == 0) tcphdr->fin = 1;
+
     }
     
 }
