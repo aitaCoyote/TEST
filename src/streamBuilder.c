@@ -21,6 +21,7 @@ stream_t build_standard_packet_stream_empty_payload(
             packet_t packet = build_standard_packet(source_port, destination_port, source_ip_address, destination_ip_address, 4096, "");
             if(packet.tcpheader == NULL){
                 //Means we got a malformed or null packet back
+                perror("we got a malformed or null packet back");
                 stream_res.packet_stream = NULL;
                 stream_res.stream_length = 0;
                 return stream_res;
